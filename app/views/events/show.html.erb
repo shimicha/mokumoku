@@ -93,12 +93,14 @@
                               data: { confirm: 'キャンセルします' }
                   %>
                 <% else %>
+                <% unless @event.only_woman && !current_user.woman? %>
                   <%= link_to 'このもくもく会に参加する',
                               event_attendance_url(@event),
                               class: 'btn btn-primary',
                               method: :post,
                               data: { confirm: '申し込みます' }
                   %>
+                  <% end %>
                 <% end %>
               <% end %>
             <% end %>
@@ -132,6 +134,9 @@
               <%= f.text_area :content, class: 'form-control' %>
             </div>
             <%= f.submit class: 'btn btn-primary btn-sm' %>
+          <% end %>
+          <% if @event&.only_woman? %>
+            <span class="badge bg-secondary">女性限定</span>
           <% end %>
         </div>
       </div>
