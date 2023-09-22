@@ -33,7 +33,7 @@
             </div>
             <div class="mb-3">
             <%= f.label :gender %>
-            <%= f.select :gender, User.genders.keys.map { |s| [s.humanize, s] }, { selected: @user.gender || "other" }, { class: 'form-control' } %>
+            <%= f.select :gender, User.genders_i18n.keys.map { |k| [User.genders_i18n[k], k]}, {class: 'form-control'} %>
             </div>
             <div class="mb-3">
               <div class="form-check">
